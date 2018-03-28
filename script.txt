@@ -1,0 +1,24 @@
+create table users (id NUMBER PRIMARY KEY, email VARCHAR2(200) UNIQUE NOT NULL,name VARCHAR2(200)
+		  ,password VARCHAR2(200),gender VARCHAR2(10),status VARCHAR2(15),statusFlag VARCHAR2(20))
+
+create table addFriend (userID NUMBER ,friendID NUMBER,requestFlag NUMBER)
+
+ALTER table addFriend
+ADD CONSTRAINT user_fk 
+FOREIGN KEY(userID)
+REFERENCES users(id)
+
+ALTER table addFriend
+ADD CONSTRAINT friend_fk 
+FOREIGN KEY(friendID)
+REFERENCES users(id)
+
+ALTER table addFriend
+ADD CONSTRAINT composite_key 
+PRIMARY KEY(userID,friendID)
+
+
+
+
+
+
